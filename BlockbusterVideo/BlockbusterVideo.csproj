@@ -101,6 +101,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app.css">
+      <DependentUpon>app.less</DependentUpon>
+    </Content>
+    <Content Include="Content\app.min.css">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="MoviesDB.Context.tt">
@@ -116,6 +122,9 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\MovieBrowser\MovieBrowserController.js" />
     <Content Include="Scripts\MovieBrowser\MovieBrowserService.js" />
+    <Content Include="Scripts\MovieBrowser\MovieRentalButtonDirective.js" />
+    <Content Include="Scripts\MovieBrowser\MovieRentalService.js" />
+    <Content Include="Scripts\MovieBrowser\View\MovieRentalButtonDirective.tmpl.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +173,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="package.json" />
+    <Content Include="Content\app.less" />
+    <Content Include="Content\app.css.map">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,7 +186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>

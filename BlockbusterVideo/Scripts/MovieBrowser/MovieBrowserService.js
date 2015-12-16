@@ -25,10 +25,8 @@ var movieBrowserService = function ($http, $q) {
             url: '/api/Movies/SearchMovies',
             params: {searchTerm: searchTerm, pageSize:pageSize, pageNumber:pageNumber}
         }).then(function successCallback(response) {
-            console.log(response.data);
             def.resolve(response.data);
         }, function errorCallback(response) {
-            console.log(response.data);
             def.reject(response);
         });
 

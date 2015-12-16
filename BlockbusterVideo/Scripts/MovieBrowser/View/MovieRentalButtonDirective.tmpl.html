@@ -1,0 +1,7 @@
+﻿
+<span ng-if="!movie.checkedOut">
+    <a href="#" ng-click="checkOut(this, movie)">Checkout</a>
+</span>
+<span ng-if="movie.checkedOut">
+    <a href="#" ng-click="checkIn(this, movie)">Checkin</a>
+</span>

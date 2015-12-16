@@ -6,12 +6,15 @@
 
 <!DOCTYPE html>
 <html>
-<head >
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/app.css" rel="stylesheet" />
     <script src="~/node_modules/angular/angular.js"></script>
     <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/MovieBrowser/MovieRentalButtonDirective.js"></script>
+    <script src="~/Scripts/MovieBrowser/MovieRentalService.js"></script>
     <script src="~/Scripts/MovieBrowser/MovieBrowserService.js"></script>
     <script src="~/Scripts/MovieBrowser/MovieBrowserController.js"></script>
 </head>
@@ -22,8 +25,34 @@
 
     <div ng-controller="MovieBrowserController">
         <input type="text" ng-model="searchTerm" ng-change="searchTerm_changed()" />
-        <ul ng-repeat="movie in movies">
-            <li>{{movie.Title}}</li>
+        <p></p>
+
+        <h3>Checked Out Movies</h3>
+        <ul ng-repeat="item in checkedOutItems">
+            <li>{{item.Title}}</li>
+
         </ul>
+
+        <h3>Search Results</h3>
+        <table cellpadding="0" cellspacing="0"">
+            <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Rating</td>
+                    <td>Year</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody ng-repeat="movie in movies">
+                <tr ng-class-odd="'odd'" ng-class-even="'even'">
+                    <td>{{movie.Title}}</td>
+                    <td style="width:50px">{{movie.Rating}}</td>
+                    <td style="width:50px">{{movie.Year}}</td>
+                    <td style="width:50px"><movie-rental-button></movie-rental-button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
     </div>
 </html>
