@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MovieDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" />
+          <Property Name="Studio" Type="varchar" MaxLength="50" />
+          <Property Name="Released" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Sound" Type="varchar" MaxLength="50" />
+          <Property Name="Versions" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Rating" Type="varchar" MaxLength="50" />
+          <Property Name="Year" Type="varchar" MaxLength="50" />
+          <Property Name="Genre" Type="varchar" MaxLength="50" />
+          <Property Name="Aspect" Type="varchar" MaxLength="50" />
+          <Property Name="UPC" Type="varchar" MaxLength="50" />
+          <Property Name="DVDReleaseDate" Type="date" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="MovieDBModelStoreContainer">
+          <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MovieDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MovieDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Movies" EntityType="MovieDBModel.Movie" />
+          <EntitySet Name="sysdiagrams" EntityType="MovieDBModel.sysdiagram" />
+        </EntityContainer>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Studio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Released" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sound" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Versions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Genre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aspect" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DVDReleaseDate" Type="DateTime" Precision="0" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MovieDBModelStoreContainer" CdmEntityContainer="MovieDBEntities">
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="MovieDBModel.Movie">
+              <MappingFragment StoreEntitySet="Movie">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="DVDReleaseDate" ColumnName="DVDReleaseDate" />
+                <ScalarProperty Name="UPC" ColumnName="UPC" />
+                <ScalarProperty Name="Aspect" ColumnName="Aspect" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+                <ScalarProperty Name="Sound" ColumnName="Sound" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Released" ColumnName="Released" />
+                <ScalarProperty Name="Studio" ColumnName="Studio" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MovieDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
